@@ -1,0 +1,26 @@
+const vendasRaw = [
+    { produto: 'Teclado', preco: 150 },
+    { produto: 'Mouse', preco: 80 },
+    { produto: 'Teclado', preco: 150 }, // Duplicado
+    { produto: 'Monitor', preco: 900 },
+    { produto: 'Mouse', preco: 80 },    // Duplicado
+    { produto: 'Mousepad', preco: 30 }
+];
+// 1. Criar um Set com produtos únicos
+const produtosUnicos = new Set(vendasRaw.map(item => item.produto));
+console.log([...produtosUnicos]);
+// Saída: ['Teclado', 'Mouse', 'Monitor', 'Mousepad']
+// 2. Criar um Map associando produto ao preço
+const mapaProdutos = new Map();
+vendasRaw.forEach(item => {
+    mapaProdutos.set(item.produto, item.preco);
+});
+console.log(mapaProdutos);
+// Exemplo de saída: Map { 'Teclado' => 150, 'Mouse' => 80, 'Monitor' => 900, 'Mousepad' => 30 }
+
+// 3. Calcular o total da compra
+let total = 0;
+for (const item of vendasRaw) {
+    total += item.preco;
+}
+console.log(total);
